@@ -1,13 +1,10 @@
-package es.kaecius.web;
+package es.kaecius;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("es.kaecius")
-@Slf4j
+//@ComponentScan({"es.kaecius.core","es.kaecius.web"})
 public class WebApp {
 
     public static void main(String[] args) {
