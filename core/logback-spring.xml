@@ -1,0 +1,3 @@
+<configuration>
+    <logger name="es.kaecius.core" level="DEBUG"/>
+</configuration>

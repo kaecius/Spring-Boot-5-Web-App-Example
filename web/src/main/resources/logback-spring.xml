@@ -1,0 +1,6 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="es.kaecius.web" level="DEBUG"/>
+
+</configuration>
