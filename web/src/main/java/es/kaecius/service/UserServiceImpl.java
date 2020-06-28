@@ -1,31 +1,25 @@
 package es.kaecius.service;
 
-
 import es.kaecius.dao.UserDao;
 import es.kaecius.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+@Service("userService")
+public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
     }
-
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username);
-        }
-        return new UserDetailsImpl(user);
+    public void createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userDao.save(user);
     }
+
 }

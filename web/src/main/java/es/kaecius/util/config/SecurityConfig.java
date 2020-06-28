@@ -1,7 +1,7 @@
 package es.kaecius.util.config;
 
 
-import es.kaecius.service.UserServiceImpl;
+import es.kaecius.service.UserDetailsServiceImpl;
 import es.kaecius.util.constant.UrlMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(UserServiceImpl userDetailsService) {
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 

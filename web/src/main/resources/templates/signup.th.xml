@@ -3,18 +3,19 @@
     <attr sel="#site-title" th:text="#{movie.site.title}"/>
     <attr sel="#login-form"
           th:action="@{__${T(es.kaecius.util.constant.UrlMapping).SIGNUP}__}"
-          th:method="post">
+          th:method="post"
+          th:object="${user}">
         <attr sel="#signup" th:text="#{movie.site.signup}"/>
         <attr sel="#name-label" th:text="#{movie.site.name}"/>
-        <attr sel="#name" th:placeholder="#{movie.site.name}"/>
+        <attr sel="#name" th:placeholder="#{movie.site.name}" th:field="*{firstName}"/>
         <attr sel="#lastname-label" th:text="#{movie.site.lastname}"/>
-        <attr sel="#lastname" th:placeholder="#{movie.site.lastname}"/>
+        <attr sel="#lastname" th:placeholder="#{movie.site.lastname}" th:field="*{lastName}"/>
         <attr sel="#user-label" th:text="#{movie.site.username}"/>
         <attr sel="#username"
-              th:placeholder="#{movie.site.username}"/>
+              th:placeholder="#{movie.site.username}" th:field="*{username}"/>
         <attr sel="#password-label" th:text="#{movie.site.password}"/>
         <attr sel="#password"
-              th:placeholder="#{movie.site.password}"/>
+              th:placeholder="#{movie.site.password}" th:field="*{password}"/>
         <attr sel="#signup-submit" th:value="#{movie.site.signup}"/>
         <attr sel="#login-btn"
               th:href="@{__${T(es.kaecius.util.constant.UrlMapping).LOGIN}__}"
