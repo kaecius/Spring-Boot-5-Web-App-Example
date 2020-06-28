@@ -40,8 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(UrlMapping.HOME).permitAll()
+                .antMatchers(UrlMapping.LOGIN).permitAll()
+                .antMatchers(UrlMapping.SIGNUP).permitAll()
+                .antMatchers(UrlMapping.PUBLIC_RESOURCES).permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin()
+                .and().formLogin().loginPage(UrlMapping.LOGIN)
+                .failureForwardUrl(UrlMapping.LOGIN_ERROR)
                 .and().logout();
     }
 }

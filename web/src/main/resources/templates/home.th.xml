@@ -1,0 +1,21 @@
+<thlogic xmlns:th="http://www.thymeleaf.org">
+    <attr sel="#css-signin" th:href="@{/public/css/signin.css}"/>
+    <attr sel="#site-title" th:text="#{movie.site.title}"/>
+    <attr sel="#login-form"
+          th:action="@{__${T(es.kaecius.util.constant.UrlMapping).LOGIN}__}"
+          th:method="post">
+        <attr sel="#login" th:text="#{movie.site.login}"/>
+        <attr sel="#user-label" th:text="#{movie.site.username}"/>
+        <attr sel="#username"
+              th:placeholder="#{movie.site.username}"/>
+        <attr sel="#password-label" th:text="#{movie.site.password}"/>
+        <attr sel="#password"
+              th:placeholder="#{movie.site.password}"/>
+        <attr sel="#login-submit" th:value="#{movie.site.login}"/>
+        <attr sel="#register-btn"
+              th:href="@{__${T(es.kaecius.util.constant.UrlMapping).SIGNUP}__}"
+              th:text="#{movie.site.signup}"/>
+    </attr>
+    <attr sel="#error-message-div" th:if="${param.error}"/>
+
+</thlogic>

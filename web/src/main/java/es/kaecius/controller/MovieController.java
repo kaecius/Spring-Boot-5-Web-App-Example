@@ -4,7 +4,10 @@ package es.kaecius.controller;
 import es.kaecius.util.constant.UrlMapping;
 import es.kaecius.util.constant.ViewMapping;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -14,12 +17,13 @@ import javax.servlet.http.HttpSession;
 public class MovieController {
 
     @RequestMapping(UrlMapping.HOME)
-    public String home(HttpSession session) {
-        log.info("session = {}", session);
-        session.getAttributeNames().asIterator().forEachRemaining(i -> {
-            log.info(i);
-        });
-        return ViewMapping.HOME;
+    public String home(HttpSession session, Authentication authentication, Model model) {
+        return (authentication != null && authentication.isAuthenticated()) ? UrlMapping.MOVIE_REDIRECT : ViewMapping.HOME;
+    }
+
+    @GetMapping(UrlMapping.SIGNUP)
+    public String signupGet() {
+        return ViewMapping.SIGNUP;
     }
 
 }
